@@ -1,5 +1,7 @@
 #include <stdio.h>
-#include "d:/src/common/mistl/mistl.h"
+#include <windows.h>
+#include "winlock.h"
+#include "mistl.h"
 
 
 struct Test_t
@@ -80,34 +82,34 @@ void test_list()
 	Test_t test1;
 	lstTest1.push_back(test1);
 
-	mistd::milist<int> lst, lst2;
+	mistd::milist<int> lt, lt2;
 	int    v[3] = {1, 2, 3};
-	lst.push_back(v[0]);
-	lst.push_back(v[1]);
-	lst.push_back(v[2]);
-	lst.push_back(4);
+	lt.push_back(v[0]);
+	lt.push_back(v[1]);
+	lt.push_back(v[2]);
+	lt.push_back(4);
 
-	lst2      = lst;
-	int    t  = lst.back();
+	lt2      = lt;
+	int   t  = lt.back();
 
-	int  * t1 = &lst.back();
+	int * t1 = &lt.back();
 	//mistd::milist<int>::milist_node_t * node = mistd::milist_data_to_node(t1);
 
-	const mistd::milist<int> & plst = lst;
+	const mistd::milist<int> & plst = lt;
 	bool emp = plst.empty();
 	plst.back();
-	lst.back();
+	lt.back();
 
-	lst.pop_back();
-	lst.pop_front();
-	for(mistd::milist<int>::const_iterator it = lst.begin(), end = lst.end(); it != end; it++)
+	lt.pop_back();
+	lt.pop_front();
+	for(mistd::milist<int>::const_iterator it = lt.begin(), end = lt.end(); it != end; it++)
 	{
 		printf("%d,", *it);
 	}
 	printf("\n");
 
 
-	::mistd::milist<int> lst3(lst2);
+	::mistd::milist<int> lt3(lt2);
 	mistd::milist<mistd::mistring> lstS, lstS2;
 	mistd::mistring str1 = "124";
 	lstS.push_back(str1);

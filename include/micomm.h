@@ -15,17 +15,10 @@
 #define  DESCLARE_NAMESPACE_MISTD_BEGIN  namespace mistd {
 #define  DESCLARE_NAMESPACE_MISTD_END    }
 
-#ifndef  offsetof
-#define  offsetof(_type, _member)        ((int)&((_type *)0)->_member)
-#endif
+#define  mioffsetof(_type, _member)      ((int)&((_type *)0)->_member)
 
 
 DESCLARE_NAMESPACE_MISTD_BEGIN
-#define  __mpmalloc      malloc
-#define  __mpfree        free
-#include "mimalloc.h"
-
-
 #define mitchar          char
 #define misize_t         size_t
 #define miuchar          unsigned char
@@ -33,11 +26,20 @@ DESCLARE_NAMESPACE_MISTD_BEGIN
 #define miint64          __int64
 
 #define miassert         assert
-#define mimalloc         MwAlloc
-#define mifree           MwFree
 #define mimemset         memset
 #define mimemcpy         memcpy
 #define mimemmove        memmove
+
+#ifndef __mpmalloc_free__
+#define __mpmalloc       malloc
+#define __mpfree         free
+#endif
+
+#include "mimalloc.h"
+#ifndef __mimalloc_free__
+#define mimalloc         MwAlloc
+#define mifree           MwFree
+#endif
 
 
 template <typename T>

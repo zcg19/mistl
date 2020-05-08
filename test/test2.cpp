@@ -1,4 +1,4 @@
-#include "d:/src/common/mistl/mistl.h"
+#include "mistl.h"
 #include <atlstr.h>
 
 

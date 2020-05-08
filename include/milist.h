@@ -296,5 +296,5 @@ private:
 template <typename TNode>
 inline typename milist<TNode>::milist_node_t * milist_data_to_node(TNode * data)
 {
-	return (milist<TNode>::milist_node_t*)((char*)data - offsetof(milist<TNode>::milist_node_t, data));
+	return (milist<TNode>::milist_node_t*)((char*)data - mioffsetof(milist<TNode>::milist_node_t, data));
 }

@@ -25,7 +25,9 @@ typedef struct MemwNodeHeader_t
 	unsigned char   bid:5;
 	unsigned int    front;
 	unsigned int    next;
-	//int           free_next;                      // hide.
+	/****** hide struct ******
+	int             free_next;
+	**************************/
 }MemwNodeHeader_t;
 
 typedef struct MemwBlock_t
@@ -583,8 +585,8 @@ void * MwAlloc(unsigned int size)
 		}
 	}
 
-	MILOG("[error]: memw pool, malloc failed -->block size reach to max limit!(2)\n");
 	g_mpool.block_active_list_idx = MWP_BLOCK_MAX_NUM - 1;				// ... ???
+	MILOG("[error]: memw pool, malloc failed -->block size reach to max limit!(2)\n");
 	return 0;
 }
 
